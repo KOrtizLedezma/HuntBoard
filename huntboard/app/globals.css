@@ -1,0 +1,61 @@
+/* app/globals.css */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #0C0F0A;
+  --color-title: #F25F5C;
+  --color-aux: #0C0F0A;
+}
+
+.dark {
+  --color-bg: #000000;
+  --color-text: #E5E5E5;
+  --color-title: #A53860;
+  --color-aux: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-geist-sans), sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Title styling */
+.hunt-title {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--color-title);
+  font-size: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .hunt-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hunt-title {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hunt-title {
+    font-size: 5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hunt-title {
+    font-size: 100px;
+  }
+}
