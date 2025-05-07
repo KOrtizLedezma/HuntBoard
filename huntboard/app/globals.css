@@ -1,6 +1,7 @@
 /* app/globals.css */
 :root {
   --color-bg: #ffffff;
+  --color-bg-aux: #dddddd;
   --color-text: #0C0F0A;
   --color-title: #F25F5C;
   --color-aux: #0C0F0A;
@@ -8,6 +9,7 @@
 
 .dark {
   --color-bg: #000000;
+  --color-bg-aux: #222222;
   --color-text: #E5E5E5;
   --color-title: #A53860;
   --color-aux: #FFFFFF;
@@ -26,9 +28,9 @@ body {
   justify-content: center;
   height: 100vh;
   text-align: center;
+  overflow: hidden;
 }
 
-/* Title styling */
 .hunt-title {
   font-weight: 900;
   letter-spacing: -0.03em;

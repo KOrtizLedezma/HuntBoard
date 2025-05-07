@@ -10,32 +10,43 @@ type Application = {
 
 interface Props {
   applications: Application[];
+  onStatusChange?: (id: number, newStatus: string) => void;
 }
 
-export default function ApplicationTable({ applications }: Props) {
+const statuses = ["Applied", "Interview", "Rejected", "Offer"];
+
+export default function ApplicationTable({ applications, onStatusChange }: Props) {
   return (
     <section className={styles.tableSection}>
-      <h2>Applications</h2>
+      <h2 className={styles.title}>Current Applications</h2>
       <div className={styles.tableWrapper}>
         <table className={styles.table}>
           <thead>
             <tr>
-              <th className={styles.tableCell}>Company</th>
-              <th className={styles.tableCell}>Position</th>
-              <th className={styles.tableCell}>Date</th>
-              <th className={styles.tableCell}>Status</th>
+              <th className={styles.cell_title }>Company</th>
+              <th className={styles.cell_title }>Position</th>
+              <th className={styles.cell_title }>Date</th>
+              <th className={styles.cell_title }>Status</th>
             </tr>
           </thead>
           <tbody>
-            {applications.map((app: Application) => (
-              <tr key={app.id}>
-                <td className={styles.tableCell}>{app.company}</td>
-                <td className={styles.tableCell}>{app.position}</td>
-                <td className={styles.tableCell}>{app.date}</td>
-                <td className={styles.tableCell}>
-                  <span className={`${styles.status} ${styles[app.status.toLowerCase()]}`}>
-                    {app.status}
-                  </span>
+            {applications.map((app) => (
+              <tr key={app.id} className={styles.row}>
+                <td className={styles.cell}>{app.company}</td>
+                <td className={styles.cell}>{app.position}</td>
+                <td className={styles.cell}>{app.date}</td>
+                <td className={styles.cell}>
+                <select
+                  className={styles.select}
+                  value={app.status}
+                  onChange={(e) => onStatusChange?.(app.id, e.target.value)}
+                >
+                  {statuses.map((status) => (
+                    <option key={status} value={status}>
+                      {status}
+                    </option>
+                  ))}
+                </select>
                 </td>
               </tr>
             ))}

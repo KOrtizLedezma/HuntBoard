@@ -31,7 +31,8 @@ export default function ThemeToggle() {
 
   return (
     <button className={styles.toggleButton} onClick={toggleTheme}>
-      {isDark ? <HiSun size={24} /> : <HiMoon size={24} />}
+      <HiSun size={28} style={{ display: isDark ? "inline" : "none" }} />
+      <HiMoon size={28} style={{ display: isDark ? "none" : "inline" }} />
     </button>
   );
 }

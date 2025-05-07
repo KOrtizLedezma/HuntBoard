@@ -38,18 +38,14 @@ export default function ApplicationForm({ onAdd }: Props) {
 
   return (
     <section className={styles.formSection}>
-      <h2>Add New Application</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <div>
-          <label>Company</label>
-          <input name="company" value={formData.company} onChange={handleChange} required />
+          <input placeholder="Company" name="company" value={formData.company} onChange={handleChange} required />
         </div>
         <div>
-          <label>Position</label>
-          <input name="position" value={formData.position} onChange={handleChange} required />
+          <input placeholder="Position" name="position" value={formData.position} onChange={handleChange} required />
         </div>
         <div>
-          <label>Date</label>
           <input type="date" name="date" value={formData.date} onChange={handleChange} required />
         </div>
         <button type="submit">Add</button>

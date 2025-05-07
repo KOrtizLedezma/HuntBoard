@@ -19,17 +19,31 @@
 }
   
 .form label {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-title);
+    font-size: 1.5rem;
 }
   
 .form input {
+    margin-top: 0.5rem;
     padding: 0.5rem;
-    border: 1px solid var(--color-aux);
+    border: 2px solid var(--color-aux);
     border-radius: 0.25rem;
     font-size: 1rem;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: border-color 0.2s ease;
 }
+
+.form input:hover {
+    border: 2px solid var(--color-title);
+}
+
+.form input:focus {
+    border-color: var(--color-title);
+    outline: none;
+  }
   
 .form button {
     background-color: var(--color-title);
@@ -39,5 +53,6 @@
     border-radius: 0.5rem;
     cursor: pointer;
     margin-top: auto;
+    font-size: 1rem;
 }
   

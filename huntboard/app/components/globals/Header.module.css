@@ -3,7 +3,6 @@
   justify-content: flex-end;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
   box-sizing: border-box;
   position: absolute;
   top: 0;
@@ -13,4 +12,22 @@
 .spacer {
   flex-grow: 1;
 }
-  
+
+.menuButton {
+  background: none;
+  border: none;
+  color: var(--color-title);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+@media (min-width: 769px) {
+  .menuButton {
+    display: none;
+  }
+}
