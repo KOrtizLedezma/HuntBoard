@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import styles from "./ApplicationForm.module.css";
+import { getAccessToken } from "../utils/auth";
 
 type Application = {
   id: number;
@@ -26,14 +27,37 @@ export default function ApplicationForm({ onAdd }: Props) {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onAdd({
-      id: Date.now(),
+
+    const token = await getAccessToken();
+    if (!token) {
+      alert("Not authenticated.");
+      return;
+    }
+
+    const newApp = {
       ...formData,
-      status: "Applied"
+      status: "Applied",
+    };
+
+    const res = await fetch("http://127.0.0.1:8000/api/applications/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newApp),
     });
-    setFormData({ company: "", position: "", date: "" });
+
+    if (res.ok) {
+      const savedApp = await res.json();
+      onAdd({ id: savedApp.id, ...newApp });
+      setFormData({ company: "", position: "", date: "" });
+    } else {
+      const error = await res.json();
+      alert("Error: " + JSON.stringify(error));
+    }
   };
 
   return (

@@ -1,7 +1,7 @@
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export function StatusBarChart({ counts }: { counts: { Applied: number; Interview: number; Rejected: number; Offer: number } }) {
   const chartData = {
@@ -13,5 +13,32 @@ export function StatusBarChart({ counts }: { counts: { Applied: number; Intervie
     }]
   };
 
-  return <Bar data={chartData} />;
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Application Status',
+        font: {
+          size: 16
+        }
+      },
+      legend: {
+        display: false,
+      },
+    },
+  };
+
+  return (
+    <div className="chart-container" style={{ 
+      width: '90%', 
+      height: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      <Bar data={chartData} options={options} />
+    </div>
+  );
 }
